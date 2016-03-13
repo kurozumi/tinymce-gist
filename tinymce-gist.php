@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: TinyMCE Gist
+ * Plugin Name: Tinymce Gist
  * Version: 0.1-alpha
  * Description: PLUGIN DESCRIPTION HERE
  * Author: kurozumi

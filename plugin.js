@@ -1,34 +1,37 @@
 (function ($) {
-    tinymce.create('tinymce.plugins.TinyMCEGist', {
-        init: function (ed, url) {
-
-            ed.addButton('tinymce_gist', {
-                tooltip: "Gist",
-                cmd: 'dialog',
-                image: url + '/images/icon.png'
-            });
-
-            ed.addCommand('dialog', function () {
-                ed.windowManager.open({
-                    title: 'Gist',
-                    file: url + '/dialog.php',
-                    width: 508,
-                    height: 308,
-                    inline: 1,
-                    buttons: [{
-                            text: "Cancel",
-                            id: "cancel",
-                            class: "cancel",
-                            onclick: "close"
-                        }]
-                }, {
-                    plugin_url: url
-                });
-            });
-        }
-    });
 
     // Register plugin
-    tinymce.PluginManager.add('tinymce_gist', tinymce.plugins.TinyMCEGist);
+    tinymce.PluginManager.add('tinymce_gist', function (editor, url) {
+        
+            console.log(editor);
+
+        function showDialog() {
+            var win = editor.windowManager.open({
+                title: "Gist",
+                file: url + '/dialog.php',
+                width: 600,
+                height: 300,
+                inline: 1,
+                buttons: [{
+                        text: "Close",
+                        id: "close",
+                        class: "close",
+                        onclick: "close"
+                }]
+            }, {
+                plugin_url: url,
+                editor: editor
+            });
+        }
+
+        editor.addCommand("mceGist", showDialog);
+
+        editor.addButton('tinymce_gist', {
+            image: url + '/images/icon.png',
+            tooltip: 'Gist',
+            onclick: showDialog
+        });
+
+    });
 
 })(jQuery);
