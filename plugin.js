@@ -3,8 +3,6 @@
     // Register plugin
     tinymce.PluginManager.add('tinymce_gist', function (editor, url) {
         
-            console.log(editor);
-
         function showDialog() {
             var win = editor.windowManager.open({
                 title: "Gist",
