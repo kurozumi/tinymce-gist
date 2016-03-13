@@ -22,8 +22,6 @@
             });
         }
 
-        editor.addCommand("mceGist", showDialog);
-
         editor.addButton('tinymce_gist', {
             image: url + '/images/icon.png',
             tooltip: 'Gist',
